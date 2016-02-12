@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Robot extends SampleRobot 
 {
-	Victor R1 = new Victor(Constants.RIGHT_MOTOR);
-	Victor L1 = new Victor(Constants.LEFT_MOTOR);
-	SuperJoystickModule driver = new SuperJoystickModule(Constants.JOYSTICK_1);
-	
-	TankDrivetrain drivetrain;
-	
+    Victor R1 = new Victor(Constants.RIGHT_MOTOR);
+    Victor L1 = new Victor(Constants.LEFT_MOTOR);
+    SuperJoystickModule driver = new SuperJoystickModule(Constants.JOYSTICK_1);
+    
+    TankDrivetrain drivetrain;
+    
     public Robot() 
     {
        
@@ -21,27 +21,27 @@ public class Robot extends SampleRobot
     
     public void robotInit() 
     {
-    	drivetrain = new TankDrivetrain(L1, R1);
+        drivetrain = new TankDrivetrain(L1, R1);
     }
     
     public void autonomous()
     {
-    	
+        
     }
     
     public void operatorControl()
     {
-    	while(isOperatorControl() && isEnabled())
-    	{
-    		drivetrain.getHalo(driver.getAxisWithDeadzone(4, 0.15, false),
-    						driver.getAxisWithDeadzone(1, 0.15, true), 1, 0.8);
-    		
-    		Timer.delay(0.05);
-    	}
+        while(isOperatorControl() && isEnabled())
+        {
+            drivetrain.getHalo(driver.getAxisWithDeadzone(4, 0.15, false), 
+                               driver.getAxisWithDeadzone(1, 0.15, true), 1, 0.8);
+            
+            Timer.delay(0.05);
+        }
     }
     
     public void test() 
     {
-    	
+        
     }
 }

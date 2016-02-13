@@ -10,70 +10,70 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class SpeedControllerArray implements SpeedController
 {
-	private final SpeedController[] array;
-	
-	public SpeedControllerArray(SpeedController[] group)
-	{
-		if(group == null)
-		{
-			throw new NullPointerException("Array provided was null.");
-		}
-		this.array = group;
-	}
-	
-	@Override
-	public void disable() 
-	{
-		for(int x = 0; x < array.length; x++)
-		{
-			array[x].disable();
-		}
-	}
+    private final SpeedController[] array;
+    
+    public SpeedControllerArray(SpeedController[] group)
+    {
+        if(group == null)
+        {
+            throw new NullPointerException("Array provided was null.");
+        }
+        this.array = group;
+    }
+    
+    @Override
+    public void disable() 
+    {
+        for(int x = 0; x < array.length; x++)
+        {
+            array[x].disable();
+        }
+    }
 
-	@Override
-	public void pidWrite(double output) 
-	{
-		for(int x = 0; x < array.length; x++)
-		{
-			array[x].pidWrite(output);
-		}
-	}
+    @Override
+    public void pidWrite(double output) 
+    {
+        for(int x = 0; x < array.length; x++)
+        {
+            array[x].pidWrite(output);
+        }
+    }
 
-	@Override
-	public double get() 
-	{
-		return 0;
-	}
+    @Override
+    public double get() 
+    {
+        return 0;
+    }
 
-	@Override
-	public void set(double speed, byte syncGroup) {
+    @Override
+    public void set(double speed, byte syncGroup) {
 
-	}
-	
+    }
+    
 
-	public void setInverted() {
+    public void setInverted() {
 
-	}
+    }
 
-	@Override
-	public void set(double speed) {
-		for(int x = 0; x < array.length; x++)
-		{
-			array[x].set(speed);
-		}
-		
-	}
+    @Override
+    public void set(double speed) {
+        for(int x = 0; x < array.length; x++)
+        {
+            array[x].set(speed);
+        }
+        
+    }
 
-	@Override
-	public void setInverted(boolean isInverted) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void setInverted(boolean isInverted) {
+        // TODO Auto-generated method stub
+        
+    }
 
-	@Override
-	public boolean getInverted() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+    @Override
+    public boolean getInverted() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+    
 }

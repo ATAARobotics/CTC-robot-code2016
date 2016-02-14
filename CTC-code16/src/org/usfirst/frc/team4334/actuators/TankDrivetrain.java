@@ -1,6 +1,7 @@
-package acilibj.actuators;
+package org.usfirst.frc.team4334.actuators;
 
-import acilibj.robogps.RoboGPS;
+import org.usfirst.frc.team4334.robogps.RoboGPS;
+
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Encoder;
@@ -81,6 +82,19 @@ public class TankDrivetrain
         gps.init();
     }
     
+    private void updateGps()
+    {
+        gps.update((leftD.get() * FEET_PER_TICK), (rightD.get() * FEET_PER_TICK));
+        SmartDashboard.putNumber("Right Encoder" , rightD.get());
+        SmartDashboard.putNumber("Left Encoder", leftD.get());
+    }
+    
+    public void setRaw(double leftPow, double rightPow)
+    {
+        left.set(leftPow);
+        right.set(rightPow);
+    }
+    
     public void getTank(double rightThumb, double leftThumb, double speedMod)
     { //Controls left and right sides of drivetrain with left and right thumbsticks respectively
         left.set(leftThumb * speedMod);
@@ -95,12 +109,6 @@ public class TankDrivetrain
         
         left.set(-((leftThumb - (rightThumb * turnMod)) * speedMod));
         right.set((leftThumb + (rightThumb * turnMod)) * speedMod);
-    }
-    private void updateGps()
-    {
-        gps.update((leftD.get() * FEET_PER_TICK), (rightD.get() * FEET_PER_TICK));
-        SmartDashboard.putNumber("Right Encoder" , rightD.get());
-        SmartDashboard.putNumber("Left Encoder", leftD.get());
     }
     public void getHaloA(double rightThumb, double leftThumb, double speedMod, double turnMod)
     { //Left thumbstick controls throttle and right thumbstick controls turning

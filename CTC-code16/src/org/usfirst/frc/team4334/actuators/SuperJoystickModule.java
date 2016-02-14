@@ -1,4 +1,4 @@
-package acilibj.actuators;
+package org.usfirst.frc.team4334.actuators;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Joystick.RumbleType;
 /**
  * @author Jayden Chan
  * Date Created: April 18 2015
- * Last Updated: February 13 2015
+ * Last Updated: February 13 2016
  * 
  * Class that adds functionality to the existing WPI Joystick class.
  */

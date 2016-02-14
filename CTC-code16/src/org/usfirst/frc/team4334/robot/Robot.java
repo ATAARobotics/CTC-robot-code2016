@@ -33,8 +33,8 @@ public class Robot extends SampleRobot
     {
         while(isOperatorControl() && isEnabled())
         {
-            drivetrain.getHalo(driver.getAxisWithDeadzone(4, 0.15, false), 
-                               driver.getAxisWithDeadzone(1, 0.15, true), 1, 0.8);
+            drivetrain.getHalo(driver.getAxis(4, 0.15, 1), 
+                               driver.getAxis(1, 0.15, -1), 1, 0.8);
             
             Timer.delay(0.05);
         }

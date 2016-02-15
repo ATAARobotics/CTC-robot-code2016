@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Robot extends SampleRobot {
     
-    Victor R1 = new Victor(Constants.RIGHT_MOTOR);
-    Victor L1 = new Victor(Constants.LEFT_MOTOR);
+    Victor R1 = new Victor(Constants.RIGHT_MOTOR_1);
+    Victor R2 = new Victor(Constants.RIGHT_MOTOR_2);
+    Victor L1 = new Victor(Constants.LEFT_MOTOR_1);
+    Victor L2 = new Victor(Constants.LEFT_MOTOR_2);
     SuperJoystickModule driver = new SuperJoystickModule(Constants.JOYSTICK_1);
     
     TankDrivetrain drivetrain;
@@ -28,7 +30,7 @@ public class Robot extends SampleRobot {
     }
     
     public void robotInit() {
-        drivetrain = new TankDrivetrain(L1, R1);
+        drivetrain = new TankDrivetrain(L1, L2, R1, R2);
     }
     
     public void autonomous() {

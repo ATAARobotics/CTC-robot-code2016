@@ -92,7 +92,7 @@ public class TankDrivetrain
     public void setRaw(double leftPow, double rightPow)
     {
         left.set(leftPow);
-        right.set(rightPow);
+        right.set(-rightPow);
     }
     
     public void getTank(double rightThumb, double leftThumb, double speedMod)
@@ -107,8 +107,8 @@ public class TankDrivetrain
             updateGps();
         }
         
-        left.set(-((leftThumb - (rightThumb * turnMod)) * speedMod));
-        right.set((leftThumb + (rightThumb * turnMod)) * speedMod);
+        left.set(((leftThumb + (rightThumb * turnMod)) * speedMod));
+        right.set(-((leftThumb - (rightThumb * turnMod)) * speedMod));
     }
     public void getHaloA(double rightThumb, double leftThumb, double speedMod, double turnMod)
     { //Left thumbstick controls throttle and right thumbstick controls turning

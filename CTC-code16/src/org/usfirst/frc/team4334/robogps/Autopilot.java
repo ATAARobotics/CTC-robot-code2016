@@ -3,8 +3,8 @@ package org.usfirst.frc.team4334.robogps;
 /**
  * @authors Jayden Chan, Ayla Chase
  * 
- * Date Created: January 15 2015
- * Last Updated: January 15 2015
+ * Date Created: January 15 2016
+ * Last Updated: February 15 2016
  * 
  * @version 0.1 BETA
  * 
@@ -12,7 +12,26 @@ package org.usfirst.frc.team4334.robogps;
  * 
  */
 
-public class Autopilot 
-{
+public class Autopilot {
+    private RoboGPS gps;
     
+    public Autopilot(RoboGPS gps) {
+        this.gps = gps;
+    }
+    
+    public void straight(double feet) {
+        
+    }
+    
+    public void turnAbsolute(double degrees) {
+        
+    }
+    
+    public void turnRelative(double degrees) {
+        
+    }
+    
+    public void resetOreintation() {
+        
+    }
 }

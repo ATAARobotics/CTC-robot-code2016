@@ -2,11 +2,8 @@ package org.usfirst.frc.team4334.robot;
 
 import org.usfirst.frc.team4334.actuators.SuperJoystickModule;
 import org.usfirst.frc.team4334.actuators.TankDrivetrain;
-
-import edu.wpi.first.wpilibj.SPI;
-
 import com.kauailabs.navx.frc.AHRS;
-
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
@@ -14,15 +11,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends SampleRobot {
     
-    Victor R1 = new Victor(Constants.RIGHT_MOTOR_1);
-    Victor R2 = new Victor(Constants.RIGHT_MOTOR_2);
-    Victor L1 = new Victor(Constants.LEFT_MOTOR_1);
-    Victor L2 = new Victor(Constants.LEFT_MOTOR_2);
-    SuperJoystickModule driver = new SuperJoystickModule(Constants.JOYSTICK_1);
+    private Victor R1 = new Victor(Constants.RIGHT_MOTOR_1);
+    private Victor R2 = new Victor(Constants.RIGHT_MOTOR_2);
+    private Victor L1 = new Victor(Constants.LEFT_MOTOR_1);
+    private Victor L2 = new Victor(Constants.LEFT_MOTOR_2);
+    private TankDrivetrain drivetrain;
     
-    AHRS navx;
+    private SuperJoystickModule driver = new SuperJoystickModule(Constants.JOYSTICK_1);
     
-    TankDrivetrain drivetrain;
+    public AHRS navx;
     
     public static RobotStates gameState = RobotStates.DISABLED;
     
@@ -46,14 +43,14 @@ public class Robot extends SampleRobot {
     
     public void operatorControl() {
         Robot.gameState = RobotStates.TELEOP;
+        navx.reset();
         
         while(isOperatorControl() && isEnabled()) {
-            drivetrain.getHalo(driver.getAxis(4, 0.15, 1), 
-                               driver.getAxis(1, 0.15, -1), 1, 0.8);
             
-            SmartDashboard.putNumber("NavX angle", navx.getAngle());
-            
+            drivetrain.getHalo(driver.getAxis(4, 0.15, 1), driver.getAxis(1, 0.15, -1), 1, 0.8);
+           
             Timer.delay(0.05);
+            updateDashboard();
         }
     }
     
@@ -63,5 +60,10 @@ public class Robot extends SampleRobot {
     
     public void disabled() {
         Robot.gameState = RobotStates.DISABLED;
+    }
+    
+    private void updateDashboard()
+    {
+        SmartDashboard.putNumber("Angle", navx.getAngle());
     }
 }
